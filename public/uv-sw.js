@@ -1,8 +1,5 @@
-importScripts('/uv/uv.sw.js');
+importScripts("/uv/uv.sw.js");
 
-const params = new URL(self.serviceWorker.scriptURL).searchParams
+const sw = new UVServiceWorker();
 
-const serverURL = atob(params.get('url'));
-const sw = new UVServiceWorker(serverURL);
-
-self.addEventListener('fetch', event => event.respondWith(sw.fetch(event)));
+self.addEventListener("fetch", (event) => event.respondWith(sw.fetch(event)));
